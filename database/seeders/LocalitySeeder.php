@@ -5,8 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Locality;
 use App\Models\Location;
+
+use App\Models\Locality;
 
 class LocalitySeeder extends Seeder
 {
@@ -28,6 +29,10 @@ class LocalitySeeder extends Seeder
             [ 
             'id'=>'1000',
             'locality'=>'Bruxelles',
+            ],
+            [ 
+            'id'=>'1170',
+            'locality'=>'Watermael-Boitsfort',
             ],
         ];
         
