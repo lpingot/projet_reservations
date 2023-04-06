@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/artist', [ArtistController::class, 'index'])->name('artist.index');
 Route::get('/artist/{id}', [ArtistController::class, 'show'])
 	->where('id', '[0-9]+')->name('artist.show');
+Route::get('/artist/create', [ArtistController::class, 'create'])->name('artist.create');
+Route::post('/artist', [ArtistController::class, 'store'])->name('artist.store');
+    
 
 require __DIR__.'/auth.php';
