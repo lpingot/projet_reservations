@@ -27,11 +27,11 @@ class LocalitySeeder extends Seeder
         //Define data
        $localities = [
             [ 
-            'id'=>'1000',
+            'postal_code'=>'1000',
             'locality'=>'Bruxelles',
             ],
             [ 
-            'id'=>'1170',
+            'postal_code'=>'1170',
             'locality'=>'Watermael-Boitsfort',
             ],
         ];

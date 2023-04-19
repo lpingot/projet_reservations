@@ -5,8 +5,9 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use App\Models\Location;
 use App\Models\Locality;
+use App\Models\Location;
+
 
 class LocationSeeder extends Seeder
 {
@@ -18,7 +19,10 @@ class LocationSeeder extends Seeder
     public function run()
     {
         //Empty the table first
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Location::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
 
         //Define data
         $locations = [
@@ -59,13 +63,15 @@ class LocationSeeder extends Seeder
         //Insert data in the table
         foreach ($locations as &$data) {
 	       //Recherche de la localité correspondant au code postal
-            $locality = Locality::firstWhere('id',$data['locality_postal_code']);
+            $locality = Locality::firstWhere('postal_code',$data['locality_postal_code']);
             unset($data['locality_postal_code']);
 
             $data['slug'] = Str::slug($data['designation'],'-');
+            
             $data['locality_id'] = $locality->id;	//Référence à la table localities
-        }
+          
 
         DB::table('locations')->insert($locations);
+        }
     }
 }

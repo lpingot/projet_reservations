@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Locality;
+use App\Models\Show;
 
-class LocalityController extends Controller
+class ShowController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,11 @@ class LocalityController extends Controller
      */
     public function index()
     {
-        $localities = Locality::all();
+        $shows = Show::all();
         
-        return view('locality.index',[
-            'localities' => $localities,
-            'resource' => 'localities',
+        return view('show.index',[
+            'shows' => $shows,
+            'resource' => 'spectacles',
         ]);
     }
 
@@ -51,12 +51,11 @@ class LocalityController extends Controller
      */
     public function show($id)
     {
-        $locality = Locality::find($id);
+        $show = Show::find($id);
         
-        return view('locality.show',[
-            'locality' => $locality,
-        ]);
-
+        return view('show.show',[
+            'show' => $show,
+        ]);    
     }
 
     /**
